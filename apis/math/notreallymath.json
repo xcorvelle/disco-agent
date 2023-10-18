@@ -1,0 +1,176 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is for aws testing",
+    "version" : "1.0",
+    "title" : "AWS_PINK"
+  },
+  "host" : "9yh63wlz2a.execute-api.ca-central-1.amazonaws.com",
+  "basePath" : "/pink",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/book" : {
+      "get" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfBook"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "post" : {
+        "operationId" : "AddBook",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "Book",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Book"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "201 response",
+            "schema" : {
+              "$ref" : "#/definitions/Book"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/book/id/{id}" : {
+      "get" : {
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response"
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "put" : {
+        "operationId" : "UpdateBook",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "Book",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Book"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response"
+          },
+          "400" : {
+            "description" : "400 response"
+          },
+          "404" : {
+            "description" : "404 response"
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "delete" : {
+        "operationId" : "DeleteBookByID",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response"
+          },
+          "400" : {
+            "description" : "400 response"
+          },
+          "404" : {
+            "description" : "404 response"
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "x-api-key",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "ArrayOfBook" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Book"
+      }
+    },
+    "Book" : {
+      "type" : "object",
+      "properties" : {
+        "book_id" : {
+          "type" : "integer",
+          "description" : "Unique identifier representing a specific Book."
+        },
+        "title" : {
+          "type" : "string",
+          "description" : "Title of the book."
+        },
+        "author" : {
+          "type" : "string",
+          "description" : "Author of the book."
+        },
+        "pages" : {
+          "type" : "integer",
+          "description" : "Number of pages in the book."
+        },
+        "year" : {
+          "type" : "integer",
+          "description" : "Year the book was published."
+        },
+        "in_print" : {
+          "type" : "boolean",
+          "description" : "Is the book still in print."
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Description of the book."
+        }
+      }
+    }
+  }
+}
