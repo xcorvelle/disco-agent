@@ -68,37 +68,6 @@
           "api_key" : [ ]
         } ]
       },
-      "put" : {
-        "operationId" : "UpdateBook",
-        "consumes" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "in" : "body",
-          "name" : "Book",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/Book"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "200 response"
-          },
-          "400" : {
-            "description" : "400 response"
-          },
-          "404" : {
-            "description" : "404 response"
-          }
-        },
-        "security" : [ {
-          "api_key" : [ ]
-        } ]
-      },
       "delete" : {
         "operationId" : "DeleteBookByID",
         "consumes" : [ "application/json" ],
