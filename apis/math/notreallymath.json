@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "This is for aws testing",
-    "version" : "1.0",
+    "version" : "1.2",
     "title" : "AWS_PINK"
   },
   "host" : "9yh63wlz2a.execute-api.ca-central-1.amazonaws.com",
@@ -50,7 +50,7 @@
         } ]
       }
     },
-    "/book/id/{id}" : {
+    "/book/id/{ids}" : {
       "get" : {
         "consumes" : [ "application/json" ],
         "parameters" : [ {
